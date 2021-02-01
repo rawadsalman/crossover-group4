@@ -1,18 +1,19 @@
 const express = require("express");
 const {
-  getTags,
-  getTag
- 
-} = require('../controllers/tags');
+    getCities,
+    getCity,
+  
+} = require('../controllers/cities');
 
 const api = express.Router();
 
 api
   .route("/")
-  .get(getTags)
+  .get(getCities)
 
 api
   .route('/:id')
-  .get(getTag)
+  .get(getCity)
+  
 
 module.exports = api;

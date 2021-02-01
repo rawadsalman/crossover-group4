@@ -5,7 +5,9 @@ const mongoose = require('mongoose');
 
 const getRestaurants = async (req, res, next) => {
   try {
-    const restaurants = await Restaurant.find();
+    //const restaurants = await Restaurant.find();
+    const restaurants = await Restaurant.find().populate('tags').populate('city');
+
    // console.log(resturants);
     res.json({ success: true, msg: 'show all restaurants', data: restaurants })
   } catch(err) {

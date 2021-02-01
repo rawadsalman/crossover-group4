@@ -10,7 +10,13 @@ const RestaurantSchema = new Schema({
   img: {
     type: String,
     required: false,
-  }
+  },
+  city: { 
+      type: Schema.Types.ObjectId, 
+      ref: 'City' 
+    },
+  tags: [{ type: Schema.Types.ObjectId, ref: 'Tag' }]
+
 });
 
 module.exports = mongoose.model('Restaurant', RestaurantSchema);

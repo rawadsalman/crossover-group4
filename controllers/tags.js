@@ -1,9 +1,23 @@
-const getTags = async (req, res, next) => {
+const Tag = require('../models/Tag');
+const mongoose = require('mongoose');
 
+const getTags = async (req, res, next) => {
+  try {
+    const tags = await Tag.find();
+    res.json({ success: true, msg: 'show all Tags', data: tags })
+  } catch(err) {
+    next(err)
+  }
 }
 
-const getTag = (req, res, next) => {
-
+const getTag = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const tag = await Tag.findById(id);
+    res.json({ success: true, msg: 'show selected Tagag', data: tag })
+  } catch(err) {
+    next(err)
+  }
 };
 
 
